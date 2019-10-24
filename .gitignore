@@ -1,0 +1,8 @@
+.history/*
+.history/
+design/
+generator_3_0_0.code-workspace
+node_modules/
+archive/
+.eslintrc.json
+.prettierrc

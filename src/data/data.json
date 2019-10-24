@@ -1,0 +1,6 @@
+{
+  "smallLetters": "abcdefghijklmnopqrstuvwxyz",
+  "bigLetters": "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
+  "numbers": "1234567890",
+  "specialChars":"!@#$%^&*(),./?';:{}[]=+-_§£~"
+}
