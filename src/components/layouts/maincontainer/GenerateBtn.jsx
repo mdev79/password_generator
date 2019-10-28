@@ -8,4 +8,4 @@ const GenerateBtn = props => (
   </Fragment>
 );
 
-export default PassGenBtn;
+export default GenerateBtn;

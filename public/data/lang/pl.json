@@ -9,13 +9,13 @@
   },
   "copyToClipboard": "kopiuj do schowka",
   "guide": "poradnik",
-  "back": "powrót"
+  "back": "powrót",
   "article": {
     "title": "",
     "lead:": "",
     "paragraph": ""
   },
-  "info":{
+  "info": {
     "mainInfo": "podaj liczbę od 4 do 64",
     "numberCharsErrorMin": "minimalna liczba znaków to 4",
     "numberCharsErrorMax": "maksymalna liczba znaków to 64",

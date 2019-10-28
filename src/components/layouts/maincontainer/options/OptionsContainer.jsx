@@ -1,12 +1,16 @@
 import React from 'react';
 
 const OptionsContainer = props => {
+  //  ? jak ogarnąc tu propsy??!!!
+  // console.log(props);
+
+  const spec = '';
   return (
     <div className='options__container'>
       <div className='options'></div>
       <form>
         <label className='label' htmlFor='chars__number'>
-          {}
+          {/* {options.howManyChars} */}
         </label>
         <input
           className='input input__text'
@@ -18,7 +22,7 @@ const OptionsContainer = props => {
         <br />
         <span className='info'></span>
         <label className='label' htmlFor='small__letters'>
-          {}
+          małe litery
         </label>
         <input
           className='input input__checkbox'
@@ -27,7 +31,7 @@ const OptionsContainer = props => {
           name='smallLetters'
         />
         <label className='label' htmlFor='big__letters'>
-          {}
+          wielkie litery
         </label>
         <input
           className='input input__checkbox'
@@ -36,7 +40,7 @@ const OptionsContainer = props => {
           name='bigLetters'
         />
         <label className='label' htmlFor='numbers'>
-          {}
+          cyfry
         </label>
         <input
           className='input input__checkbox'
@@ -45,7 +49,7 @@ const OptionsContainer = props => {
           name='numbers'
         />
         <label className='label' htmlFor='special__chars'>
-          {}
+          {spec || 'special chars'}
         </label>
         <input
           className='input input__checkbox'
@@ -57,4 +61,4 @@ const OptionsContainer = props => {
     </div>
   );
 };
-export default Options;
+export default OptionsContainer;

@@ -9,13 +9,13 @@
   },
   "copyToClipboard": "copy to clipboard",
   "guide": "guide",
-  "back": "back"
+  "back": "back",
   "article": {
     "title": "",
     "lead:": "",
     "paragraph": ""
   },
-  "info":{
+  "info": {
     "mainInfo": "require number from 4 to 64",
     "numberCharsErrorMin": "minimal number of characters is 4",
     "numberCharsErrorMax": "maximal number of characters is 64",
