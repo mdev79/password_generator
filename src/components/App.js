@@ -22,6 +22,30 @@ class App extends Component {
   }
 
   render() {
+    const {
+      mainBtn,
+      howManyChars,
+      smallLetters,
+      bigLetters,
+      numbers,
+      specialChars,
+      copyToClipboard,
+      guide,
+      back,
+      title,
+      lead,
+      paragraph,
+      mainInfo,
+      numberCharsErrorMin,
+      numberCharsErrorMax,
+      lettersCharsErrorMin,
+      week,
+      medium,
+      strong,
+      veryStrong,
+      errorCheckbox,
+      charsWarning
+    } = this.state.lang;
     return (
       <div className='App'>
         <MainContainer />
