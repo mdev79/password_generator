@@ -1,6 +1,17 @@
+:root {
+  --cgreen: #2DB88C;
+  --cblue: #6BA8B9;
+  --corange: #EE8B68;
+  --cviolet: #7676C1;
+  --cgrey: #A1A2B6;
+  --cyellow: #E7A633;
+}
+
+
+
 html {
-  ont-size: 10px;
-  font-family:'Open Sans', arial, sans-serif;
+  ont-size: 12px;
+  font-family: arial, sans-serif;
   color: #222;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -16,4 +27,3 @@ html {
   -moz-box-sizing: inherit;
   box-sizing: inherit;
 }
-
