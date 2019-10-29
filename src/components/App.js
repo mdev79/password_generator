@@ -4,6 +4,7 @@ import MainContainer from './layouts/maincontainer/MainContainer';
 
 class App extends Component {
   state = {
+    // lang settings
     currentLang: 'pl',
     urlToLangFile: 'data/lang/pl.json',
     lang: {}
@@ -23,7 +24,7 @@ class App extends Component {
   render() {
     return (
       <div className='App'>
-        <MainContainer props />
+        <MainContainer />
       </div>
     );
   }
