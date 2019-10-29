@@ -23,7 +23,7 @@ class App extends Component {
   render() {
     return (
       <div className='App'>
-        <MainContainer lang={this.state.lang} />
+        <MainContainer props />
       </div>
     );
   }
