@@ -1,5 +1,6 @@
 {
   "mainBtn": "generate password",
+  "options": "options",
   "howManyChars": "how many characters?",
   "smallLetters": "small letters",
   "bigLetters": "big letters",

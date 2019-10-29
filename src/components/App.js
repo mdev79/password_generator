@@ -10,7 +10,7 @@ class App extends Component {
     lang: {}
   };
 
-  componentDidMount() {
+  componentWillMount() {
     const { urlToLangFile } = this.state;
     fetch(urlToLangFile)
       .then(res => res.json())
@@ -24,6 +24,7 @@ class App extends Component {
   render() {
     const {
       mainBtn,
+      options,
       howManyChars,
       smallLetters,
       bigLetters,
@@ -48,7 +49,16 @@ class App extends Component {
     } = this.state.lang;
     return (
       <div className='App'>
-        <MainContainer />
+        <MainContainer
+          mainBtn={mainBtn}
+          options={options}
+          howManyChars={howManyChars}
+          smallLetters={smallLetters}
+          bigLetters={bigLetters}
+          numbers={numbers}
+          specialChars={specialChars}
+          copyToClipboard={copyToClipboard}
+        />
       </div>
     );
   }
