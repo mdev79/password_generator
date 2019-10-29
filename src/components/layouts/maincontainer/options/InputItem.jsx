@@ -2,7 +2,6 @@ import React from 'react'
 const InputItem = (props) => {
   return(
   <label className='label' htmlFor='chars__number'>
-  {/* {options.howManyChars} */}
 </label>
 <input
   className='input input__text'
