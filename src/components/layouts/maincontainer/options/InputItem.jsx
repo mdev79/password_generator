@@ -1,19 +1,6 @@
 import React, { Fragment } from 'react';
 const InputItem = props => {
-  const {
-    type,
-    key,
-    name,
-    placeholder,
-    id,
-    className,
-    howManyChars,
-    smallLetters,
-    bigLetters,
-    numbers,
-    specialChars,
-    label
-  } = props;
+  const { type, key, name, placeholder, id, className, label } = props;
   return (
     <Fragment>
       <label className={className} htmlFor={id}>
