@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 const InputItem = props => {
-  const { type, key, name, placeholder, id, className, label } = props;
+  const { type, name, placeholder, id, className, label } = props;
   return (
     <Fragment>
       <label className={className} htmlFor={id}>
@@ -10,7 +10,6 @@ const InputItem = props => {
         className={className}
         id={id}
         type={type}
-        key={key}
         name={name}
         placeholder={placeholder}
       />

@@ -1,13 +1,21 @@
 import React, { Component } from 'react';
 import '../style/App.css';
+import Logo from './layouts/logo/Logo';
 import MainContainer from './layouts/maincontainer/MainContainer';
+import SideContainer from './layouts/sidecontainer/SideContainer';
+import ArticleContainer from './layouts/article/ArticleContainer';
+import Footer from './layouts/footer/Footer';
+import FourOFour from './layouts/404/404';
+import Cookie from './layouts/cookie/Cookie';
 
 class App extends Component {
   state = {
     // lang settings
     currentLang: 'pl',
     urlToLangFile: 'data/lang/pl.json',
-    lang: {}
+    lang: {},
+    // password
+    password: 'coś tam'
   };
 
   componentWillMount() {
@@ -47,8 +55,10 @@ class App extends Component {
       errorCheckbox,
       charsWarning
     } = this.state.lang;
+    const { password } = this.state;
     return (
       <div className='App'>
+        <Logo />
         <MainContainer
           mainBtn={mainBtn}
           options={options}
@@ -58,7 +68,12 @@ class App extends Component {
           numbers={numbers}
           specialChars={specialChars}
           copyToClipboard={copyToClipboard}
+          password={password}
         />
+        <SideContainer guide={guide} />
+        <ArticleContainer />
+        <Footer />
+        <Cookie />
       </div>
     );
   }

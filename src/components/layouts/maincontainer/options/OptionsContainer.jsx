@@ -19,7 +19,7 @@ const OptionsContainer = props => {
           name='howManyChars'
           id='how__many__chars'
           placeholder='12'
-          classNAme='input input__text howManyChars'
+          className='input input__text how__many__chars__c'
           label={howManyChars}
         />
         <InputItem
@@ -27,7 +27,7 @@ const OptionsContainer = props => {
           key='smallLetters'
           name='smallLetters'
           id='small__letters'
-          classNAme='input input__text smallLetters'
+          className='input input__text small__letters__c'
           label={smallLetters}
         />
         <InputItem
@@ -35,7 +35,7 @@ const OptionsContainer = props => {
           key='bigLetters'
           name='bigLetters'
           id='big__letters'
-          classNAme='input input__text bigLetters'
+          classNme='input input__text big__letters__c '
           label={bigLetters}
         />
         <InputItem
@@ -43,7 +43,7 @@ const OptionsContainer = props => {
           key='numbers'
           name='numbers'
           id='numbers'
-          classNAme='input input__text '
+          className='input input__text numbers__c'
           label={numbers}
         />
         <InputItem
@@ -51,7 +51,7 @@ const OptionsContainer = props => {
           key='specialChars'
           name='specialChars'
           id='special__chars'
-          classNAme='input input__text specialChars'
+          className='input input__text special__chars__c'
           label={specialChars}
         />
       </form>
