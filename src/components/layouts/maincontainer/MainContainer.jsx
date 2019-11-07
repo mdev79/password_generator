@@ -8,8 +8,14 @@ import PropTypes from 'prop-types';
 
 class MainContainer extends Component {
   state = {
-    // password
-    password: 'coś tam'
+    // password settings
+    password: 'coś tam',
+    charsNumber: '12',
+    smallLettersOn: true,
+    bigLettersOn: true,
+    numbersOn: true,
+    specialCharsOn: true
+    // errors settings
   };
   generatePassword = e => {
     console.log('warczajet');
