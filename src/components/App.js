@@ -14,8 +14,14 @@ class App extends Component {
     currentLang: 'pl',
     urlToLangFile: 'data/lang/pl.json',
     lang: {},
-    // password
-    password: 'coś tam'
+    // password settings
+    password: 'coś tam',
+    charsNumber: '12',
+    smallLettersOn: true,
+    bigLettersOn: true,
+    numbersOn: true,
+    specialCharsOn: true
+    // errors settings
   };
 
   componentWillMount() {
