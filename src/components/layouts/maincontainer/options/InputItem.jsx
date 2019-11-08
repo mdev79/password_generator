@@ -1,6 +1,15 @@
 import React, { Fragment } from 'react';
 const InputItem = props => {
-  const { type, name, placeholder, id, className, label } = props;
+  const {
+    type,
+    name,
+    placeholder,
+    id,
+    className,
+    label,
+    getCheckboxData,
+    getCharsNumber
+  } = props;
   return (
     <Fragment>
       <label className={className} htmlFor={id}>
@@ -12,6 +21,9 @@ const InputItem = props => {
         type={type}
         name={name}
         placeholder={placeholder}
+        onClick={getCheckboxData}
+        onChange={getCharsNumber}
+        defaultChecked
       />
     </Fragment>
   );

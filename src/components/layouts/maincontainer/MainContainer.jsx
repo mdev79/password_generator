@@ -9,17 +9,33 @@ import PropTypes from 'prop-types';
 class MainContainer extends Component {
   state = {
     // password settings
-    password: 'coś tam',
+    data: [],
     charsNumber: '12',
-    smallLettersOn: true,
-    bigLettersOn: true,
-    numbersOn: true,
-    specialCharsOn: true
+    smallLetters: true,
+    bigLetters: true,
+    numbers: true,
+    specialChars: true,
+    password: 'coś tam'
+
     // errors settings
   };
   generatePassword = e => {
     console.log('warczajet');
   };
+  getCheckboxData = e => {
+    const name = e.target.name;
+    const checked = e.target.checked;
+    this.setState({
+      [name]: checked
+    });
+  };
+  getCharsNumber = e => {
+    const value = e.target.value;
+    this.setState({
+      charsNumber: value
+    });
+  };
+
   render() {
     const { mainBtn, password, copyToClipboard } = this.props;
     return (
@@ -28,7 +44,11 @@ class MainContainer extends Component {
           mainBtn={mainBtn}
           generatePassword={this.generatePassword}
         />
-        <OptionsContainer {...this.props} />
+        <OptionsContainer
+          getCheckboxData={this.getCheckboxData}
+          getCharsNumber={this.getCharsNumber}
+          {...this.props}
+        />
         <PassArea password={password} />
         <CopyToClipBtn copyToClipboard={copyToClipboard} />
       </div>

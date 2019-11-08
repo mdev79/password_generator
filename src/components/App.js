@@ -11,12 +11,11 @@ import Cookie from './layouts/cookie/Cookie';
 class App extends Component {
   state = {
     // lang settings
-    currentLang: 'pl',
     urlToLangFile: 'data/lang/pl.json',
     lang: {}
   };
 
-  componentWillMount() {
+  componentDidMount() {
     const { urlToLangFile } = this.state;
     fetch(urlToLangFile)
       .then(res => res.json())
