@@ -11,7 +11,7 @@ import Cookie from './layouts/cookie/Cookie';
 class App extends Component {
   state = {
     // lang settings
-    urlToLangFile: 'data/lang/pl.json',
+    urlToLangFile: 'lang/pl.json',
     lang: {}
   };
 

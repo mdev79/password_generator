@@ -9,6 +9,12 @@ import PropTypes from 'prop-types';
 class MainContainer extends Component {
   state = {
     // password settings
+    source: {
+      smallLetters: 'abcdefghijklmnopqrstuvwxyz',
+      bigLetters: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
+      numbers: '1234567890',
+      specialChars: "!@#$%^&*(),./?';:{}[]=+-_§£~"
+    },
     data: [],
     charsNumber: '12',
     smallLetters: true,
@@ -19,9 +25,22 @@ class MainContainer extends Component {
 
     // errors settings
   };
-  generatePassword = e => {
-    console.log('warczajet');
+  componentDidMount = () => {
+    const { source } = this.state;
+    this.setState({
+      data: [
+        ...source.smallLetters,
+        ...source.bigLetters,
+        ...source.numbers,
+        ...source.specialChars
+      ]
+    });
   };
+
+  generatePassword = e => {
+    console.log(this.state.data);
+  };
+
   getCheckboxData = e => {
     const name = e.target.name;
     const checked = e.target.checked;
@@ -29,6 +48,7 @@ class MainContainer extends Component {
       [name]: checked
     });
   };
+
   getCharsNumber = e => {
     const value = e.target.value;
     this.setState({
@@ -36,6 +56,9 @@ class MainContainer extends Component {
     });
   };
 
+  getData = () => {
+    //
+  };
   render() {
     const { mainBtn, password, copyToClipboard } = this.props;
     return (
