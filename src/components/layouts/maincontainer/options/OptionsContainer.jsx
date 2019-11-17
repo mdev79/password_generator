@@ -17,7 +17,7 @@ const OptionsContainer = props => {
       <form>
         <InputItem
           type='text'
-          name='howManyChars'
+          name='howManyCharsOn'
           id='how__many__chars'
           placeholder='12'
           className='input input__text how__many__chars__c'
@@ -26,7 +26,7 @@ const OptionsContainer = props => {
         />
         <InputItem
           type='checkbox'
-          name='smallLetters'
+          name='smallLettersOn'
           id='small__letters'
           className='input input__text small__letters__c'
           label={smallLetters}
@@ -34,7 +34,7 @@ const OptionsContainer = props => {
         />
         <InputItem
           type='checkbox'
-          name='bigLetters'
+          name='bigLettersOn'
           id='big__letters'
           classNme='input input__text big__letters__c '
           label={bigLetters}
@@ -42,7 +42,7 @@ const OptionsContainer = props => {
         />
         <InputItem
           type='checkbox'
-          name='numbers'
+          name='numbersOn'
           id='numbers'
           className='input input__text numbers__c'
           label={numbers}
@@ -50,7 +50,7 @@ const OptionsContainer = props => {
         />
         <InputItem
           type='checkbox'
-          name='specialChars'
+          name='specialCharsOn'
           id='special__chars'
           className='input input__text special__chars__c'
           label={specialChars}

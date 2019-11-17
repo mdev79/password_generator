@@ -10,17 +10,17 @@ class MainContainer extends Component {
   state = {
     // password settings
     source: {
-      smallLetters: 'abcdefghijklmnopqrstuvwxyz',
-      bigLetters: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
-      numbers: '1234567890',
-      specialChars: "!@#$%^&*(),./?';:{}[]=+-_§£~"
+      smallLettersData: 'abcdefghijklmnopqrstuvwxyz',
+      bigLettersData: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
+      numbersData: '1234567890',
+      specialCharsData: "!@#$%^&*(),./?';:{}[]=+-_§£~"
     },
     data: [],
-    charsNumber: '12',
-    smallLetters: true,
-    bigLetters: true,
-    numbers: true,
-    specialChars: true,
+    charsNumberOn: '12',
+    smallLettersOn: true,
+    bigLettersOn: true,
+    numbersOn: true,
+    specialCharsOn: true,
     password: 'coś tam'
 
     // errors settings
@@ -29,10 +29,10 @@ class MainContainer extends Component {
     const { source } = this.state;
     this.setState({
       data: [
-        ...source.smallLetters,
-        ...source.bigLetters,
-        ...source.numbers,
-        ...source.specialChars
+        ...source.smallLettersData,
+        ...source.bigLettersData,
+        ...source.numbersData,
+        ...source.specialCharsData
       ]
     });
   };
