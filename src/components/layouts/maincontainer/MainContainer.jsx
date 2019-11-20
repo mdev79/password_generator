@@ -5,6 +5,17 @@ import CopyToClipBtn from './CopyToClipBtn';
 import PassArea from './PassArea';
 
 import PropTypes from 'prop-types';
+// ! important
+// ! important
+// ! important
+// ! important
+// ! important
+// TODO make more elegant structure of an pass generating engine
+// ! important
+// ! important
+// ! important
+// ! important
+// ! important
 
 class MainContainer extends Component {
   state = {
