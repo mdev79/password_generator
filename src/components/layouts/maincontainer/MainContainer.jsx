@@ -19,31 +19,37 @@ import PropTypes from 'prop-types';
 
 class MainContainer extends Component {
   state = {
-    // password settings
-    source: {
-      smallLettersData: 'abcdefghijklmnopqrstuvwxyz',
-      bigLettersData: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
-      numbersData: '1234567890',
-      specialCharsData: "!@#$%^&*(),./?';:{}[]=+-_§£~"
-    },
+    checkboxOn: ['smallLetters', 'bigLetters', 'numbers', 'specialChars'],
     data: [],
-    charsNumberOn: '12',
-    smallLettersOn: true,
-    bigLettersOn: true,
-    numbersOn: true,
-    specialCharsOn: true,
+    charsNumber: '12',
+    smallLetters: {
+      on: true,
+      data: 'abcdefghijklmnopqrstuvwxyz'
+    },
+    bigLetters: {
+      on: true,
+      data: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+    },
+    numbers: {
+      on: true,
+      data: '1234567890'
+    },
+    specialChars: {
+      on: true,
+      data: "!@#$%^&*(),./?';:{}[]=+-_§£~"
+    },
     password: 'coś tam'
-
     // errors settings
   };
+
   componentDidMount = () => {
-    const { source } = this.state;
+    const { smallLetters, bigLetters, numbers, specialChars } = this.state;
     this.setState({
       data: [
-        ...source.smallLettersData,
-        ...source.bigLettersData,
-        ...source.numbersData,
-        ...source.specialCharsData
+        ...smallLetters.data,
+        ...bigLetters.data,
+        ...numbers.data,
+        ...specialChars.data
       ]
     });
   };
@@ -52,12 +58,18 @@ class MainContainer extends Component {
     console.log(this.state.data);
   };
 
+  findIfIsTrue = el => {
+    el === true ? console.log('prawda') : console.log('nieprawda');
+  };
   getCheckboxData = e => {
     const name = e.target.name;
     const checked = e.target.checked;
     this.setState({
-      [name]: checked
+      [name]: {
+        on: checked
+      }
     });
+    console.log(this.state[name]);
   };
 
   getCharsNumber = e => {
@@ -67,9 +79,7 @@ class MainContainer extends Component {
     });
   };
 
-  getData = () => {
-    //
-  };
+  getData = () => {};
   render() {
     const { mainBtn, password, copyToClipboard } = this.props;
     return (

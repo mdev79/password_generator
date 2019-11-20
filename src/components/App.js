@@ -28,46 +28,46 @@ class App extends Component {
 
   render() {
     const {
-      mainBtn,
-      options,
-      howManyChars,
-      smallLetters,
-      bigLetters,
-      numbers,
-      specialChars,
-      copyToClipboard,
-      guide,
-      back,
-      title,
-      lead,
-      paragraph,
-      mainInfo,
-      numberCharsErrorMin,
-      numberCharsErrorMax,
-      lettersCharsErrorMin,
-      week,
-      medium,
-      strong,
-      veryStrong,
-      errorCheckbox,
-      charsWarning
+      mainBtnLang,
+      optionsLang,
+      howManyCharsLang,
+      smallLettersLang,
+      bigLettersLang,
+      numbersLang,
+      specialCharsLang,
+      copyToClipboardLang,
+      guideLang,
+      backLang,
+      titleLang,
+      leadLang,
+      paragraphLang,
+      mainInfoLang,
+      numberCharsErrorMinLang,
+      numberCharsErrorMaxLang,
+      lettersCharsErrorMinLang,
+      weekLang,
+      mediumLang,
+      strongLang,
+      veryStrongLang,
+      errorCheckboxLang,
+      charsWarningLang
     } = this.state.lang;
     const { password } = this.state;
     return (
       <div className='App'>
         <Logo />
         <MainContainer
-          mainBtn={mainBtn}
-          options={options}
-          howManyChars={howManyChars}
-          smallLetters={smallLetters}
-          bigLetters={bigLetters}
-          numbers={numbers}
-          specialChars={specialChars}
-          copyToClipboard={copyToClipboard}
+          mainBtn={mainBtnLang}
+          options={optionsLang}
+          howManyChars={howManyCharsLang}
+          smallLetters={smallLettersLang}
+          bigLetters={bigLettersLang}
+          numbers={numbersLang}
+          specialChars={specialCharsLang}
+          copyToClipboard={copyToClipboardLang}
           password={password}
         />
-        <SideContainer guide={guide} />
+        <SideContainer guide={guideLang} />
         <ArticleContainer />
         <Footer />
         <Cookie />
