@@ -22,6 +22,7 @@ class MainContainer extends Component {
     checkboxOn: ['smallLetters', 'bigLetters', 'numbers', 'specialChars'],
     data: [],
     charsNumber: '12',
+    //  ! uwaga - po daniu setstate dla takiego obiektu trzeba przepisywać cały obiekt bo wywala 'data;
     smallLetters: {
       on: true,
       data: 'abcdefghijklmnopqrstuvwxyz'
@@ -64,6 +65,7 @@ class MainContainer extends Component {
   getCheckboxData = e => {
     const name = e.target.name;
     const checked = e.target.checked;
+    //  ! uwaga - po daniu setstate dla takiego obiektu trzeba przepisywać cały obiekt bo wywala 'data;
     this.setState({
       [name]: {
         on: checked
