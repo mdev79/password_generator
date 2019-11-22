@@ -3,13 +3,12 @@ import GenerateBtn from './GenerateBtn';
 import OptionsContainer from './options/OptionsContainer';
 import CopyToClipBtn from './CopyToClipBtn';
 import PassArea from './PassArea';
-
 import PropTypes from 'prop-types';
 
 class MainContainer extends Component {
   state = {
     checkboxOn: ['smallLetters', 'bigLetters', 'numbers', 'specialChars'],
-    data: [],
+    data: '',
     source: {
       smallLetters: 'abcdefghijklmnopqrstuvwxyz',
       bigLetters: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
@@ -33,47 +32,31 @@ class MainContainer extends Component {
       specialChars
     } = this.state.source;
     this.setState({
-      data: [...smallLetters, ...bigLetters, ...numbers, ...specialChars]
+      data: `${smallLetters}${bigLetters}${numbers}${specialChars}`
     });
-  };
-
-  getData = name => {
-    const { checkboxOn, source } = this.state;
-    let tempCheckboxArray = checkboxOn;
-    let tempDataArray = [];
-    tempCheckboxArray = checkboxOn.filter(el => el !== `${name}`);
-    console.log(tempCheckboxArray);
-    tempDataArray = tempCheckboxArray.forEach(el =>
-      tempDataArray.push(...source[el])
-    );
-    console.log(tempDataArray);
-    return tempDataArray;
-  };
-
-  generatePassword = e => {
-    this.getData();
   };
 
   getCheckboxData = e => {
     const { checkboxOn, source } = this.state;
     const name = e.target.name;
-    const checked = e.target.checked;
-    let tempDataArray = [];
+    // const checked = e.target.checked;
+    let tempData = '';
+    let tempCheckboxArray = checkboxOn;
     if (checkboxOn.includes(`${name}`) && this.state[name]) {
-      tempDataArray = this.getData(name);
-
+      tempCheckboxArray = tempCheckboxArray.filter(el => el !== `${name}`);
+      tempCheckboxArray.forEach(el => (tempData += source[el]));
       this.setState({
         checkboxOn: checkboxOn.filter(el => el !== `${name}`),
-        [name]: false
-        // data: [...tempDataArray]
+        [name]: false,
+        data: tempData
       });
     } else {
-      tempDataArray = this.getData(name);
-
+      tempCheckboxArray = [...tempCheckboxArray, `${name}`];
+      tempCheckboxArray.forEach(el => (tempData += source[el]));
       this.setState({
         checkboxOn: [...checkboxOn, `${name}`],
-        [name]: true
-        // data: [...tempDataArray]
+        [name]: true,
+        data: tempData
       });
     }
   };
@@ -106,16 +89,3 @@ class MainContainer extends Component {
 }
 MainContainer.propTypes = {};
 export default MainContainer;
-
-//  previous version of props in component:
-
-// const {
-//   options,
-//   howManyChars,
-//   smallLetters,
-//   bigLetters,
-//   numbers,
-//   specialChars
-// } = props;
-
-// <OptionsContainer options={options} howManyChars={howManyChars} smallLetters={smallLetters} bigLetters={bigLetters} numbers={numbers} specialChars={specialChars} />
