@@ -39,26 +39,24 @@ class MainContainer extends Component {
   getCheckboxData = e => {
     const { checkboxOn, source } = this.state;
     const name = e.target.name;
-    // const checked = e.target.checked;
+    const checked = e.target.checked;
     let tempData = '';
     let tempCheckboxArray = checkboxOn;
-    if (checkboxOn.includes(`${name}`) && this.state[name]) {
-      tempCheckboxArray = tempCheckboxArray.filter(el => el !== `${name}`);
-      tempCheckboxArray.forEach(el => (tempData += source[el]));
-      this.setState({
-        checkboxOn: checkboxOn.filter(el => el !== `${name}`),
-        [name]: false,
-        data: tempData
-      });
-    } else {
-      tempCheckboxArray = [...tempCheckboxArray, `${name}`];
-      tempCheckboxArray.forEach(el => (tempData += source[el]));
-      this.setState({
-        checkboxOn: [...checkboxOn, `${name}`],
-        [name]: true,
-        data: tempData
-      });
-    }
+
+    checkboxOn.includes(`${name}`) && this.state[name]
+      ? (tempCheckboxArray = tempCheckboxArray.filter(el => el !== `${name}`))
+      : (tempCheckboxArray = [...tempCheckboxArray, `${name}`]);
+    tempCheckboxArray.forEach(el => (tempData += source[el]));
+    this.setState({
+      // prettier-ignore
+      checkboxOn: (
+        checkboxOn.includes(`${name}`) && this.state[name]
+          ? checkboxOn.filter(el => el !== `${name}`)
+          : [...checkboxOn, `${name}`]
+          ),
+      [name]: checked,
+      data: tempData
+    });
   };
 
   getCharsNumber = e => {
