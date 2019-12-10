@@ -8,7 +8,8 @@ import PropTypes from 'prop-types';
 class MainContainer extends Component {
   state = {
     checkboxOn: ['smallLetters', 'bigLetters', 'numbers', 'specialChars'],
-    data: '',
+    // prettier-ignore
+    data: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!@#$%^&*(),./?';:{}[]=+-_§£~",
     source: {
       smallLetters: 'abcdefghijklmnopqrstuvwxyz',
       bigLetters: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
