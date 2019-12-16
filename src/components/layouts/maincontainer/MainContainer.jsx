@@ -59,6 +59,18 @@ class MainContainer extends Component {
       data: tempData
     });
   };
+  getPassword = () => {
+    const { charsNumber, data} = this.state
+    let password = ''
+    for (let i = 0; i< charsNumber; i++) {
+const char = Math.floor(Math.random()*data.length);
+password += data[char];
+    }
+    console.log(password)
+    this.setState ({
+      password: password
+    })
+  }
 
   getCharsNumber = e => {
     const value = e.target.value;
@@ -73,7 +85,7 @@ class MainContainer extends Component {
       <div className='main__container'>
         <GenerateBtn
           mainBtn={mainBtn}
-          generatePassword={this.generatePassword}
+          generatePassword={this.getPassword}
         />
         <OptionsContainer
           getCheckboxData={this.getCheckboxData}
