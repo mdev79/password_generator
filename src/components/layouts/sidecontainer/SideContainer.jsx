@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import GuideBtn from './GuideBtn';
 import ToEngBtn from './ToEngBtn';
 import ToPlBtn from './ToPlBtn';
-import { tsPropertySignature } from '@babel/types';
 
 const SideContainer = props => {
   return (
