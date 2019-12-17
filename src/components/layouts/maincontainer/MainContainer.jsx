@@ -61,6 +61,82 @@ class MainContainer extends Component {
     });
   };
 
+  handleValidate = () => {
+    const { checkboxOn, charsNumber } = this.state;
+    const {
+      mainInfoLang,
+      numberCharsErrorMinLang,
+      numberCharsErrorMaxLang,
+      lettersCharsErrorLang,
+      weakLang,
+      mediumLang,
+      strongLang,
+      veryStrongLang,
+      errorCheckboxLang,
+      charsWarningLang
+    } = this.props;
+    if (isNaN(charsNumber)) {
+      this.setState({
+        errorMessage: lettersCharsErrorLang
+      });
+    } else {
+      if (charsNumber >= 4 && charsNumber <= 64 && checkboxOn.length > 0) {
+        if (
+          charsNumber <= 6 ||
+          (!checkboxOn.includes('numbers') &&
+            !checkboxOn.includes('specialChars'))
+        ) {
+          this.setState({
+            errorMessage: weakLang
+          });
+        } else if (
+          charsNumber <= 8 ||
+          (!checkboxOn.includes('numbers') ||
+            !checkboxOn.includes('specialChars'))
+        ) {
+          this.setState({
+            errorMessage: mediumLang
+          });
+        } else if (
+          charsNumber > 8 &&
+          charsNumber < 12 &&
+          checkboxOn.length === 4
+        ) {
+          this.setState({
+            errorMessage: strongLang
+          });
+        } else if (charsNumber >= 12 && checkboxOn.length === 4) {
+          this.setState({
+            errorMessage: veryStrongLang
+          });
+        }
+      } else if (
+        checkboxOn.length === 0 &&
+        (charsNumber >= 4 && charsNumber <= 64)
+      ) {
+        this.setState({
+          errorMessage: errorCheckboxLang
+        });
+      } else if (checkboxOn.length === 0 && charsNumber < 4) {
+        this.setState({
+          errorMessage: `${errorCheckboxLang}, ${numberCharsErrorMinLang}`
+        });
+      } else if (checkboxOn.length === 0 && charsNumber > 64) {
+        this.setState({
+          errorMessage: `${errorCheckboxLang}, ${numberCharsErrorMaxLang}`
+        });
+      } else if (checkboxOn.length > 0 && charsNumber < 4) {
+        this.setState({
+          errorMessage: numberCharsErrorMinLang
+        });
+      } else if (checkboxOn.length > 0 && charsNumber > 64) {
+        this.setState({
+          errorMessage: numberCharsErrorMaxLang
+        });
+      }
+    }
+  };
+
   getPassword = () => {
     const { charsNumber, data } = this.state;
     let password = '';
@@ -72,6 +148,7 @@ class MainContainer extends Component {
     this.setState({
       password: password
     });
+    this.handleValidate();
   };
   //
   getCharsNumber = e => {
@@ -85,7 +162,12 @@ class MainContainer extends Component {
     const { mainBtn, password, copyToClipboard } = this.props;
     return (
       <div className='main__container'>
-        <GenerateBtn mainBtn={mainBtn} generatePassword={this.getPassword} />
+        <GenerateBtn
+          mainBtn={mainBtn}
+          errorMessage={this.state.errorMessage}
+          generatePassword={this.getPassword}
+          {...this.props}
+        />
         <OptionsContainer
           getCheckboxData={this.getCheckboxData}
           getCharsNumber={this.getCharsNumber}
