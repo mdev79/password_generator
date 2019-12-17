@@ -21,8 +21,9 @@ class MainContainer extends Component {
     bigLetters: true,
     numbers: true,
     specialChars: true,
-    password: 'coś tam'
+    password: 'coś tam',
     // errors settings
+    errorMessage: 'silne'
   };
 
   componentDidMount = () => {
@@ -49,7 +50,7 @@ class MainContainer extends Component {
       : (tempCheckboxArray = [...tempCheckboxArray, `${name}`]);
     tempCheckboxArray.forEach(el => (tempData += source[el]));
     this.setState({
-      // prettier-ignore
+      //  prettier-ignore
       checkboxOn: (
         checkboxOn.includes(`${name}`) && this.state[name]
           ? checkboxOn.filter(el => el !== `${name}`)
