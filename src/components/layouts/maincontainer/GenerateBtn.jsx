@@ -9,7 +9,7 @@ const GenerateBtn = props => (
       {props.mainBtn}
     </button>
     <br />
-    <span className='info'>{}</span>
+    <span className='info'>{props.errorMessage}</span>
   </Fragment>
 );
 

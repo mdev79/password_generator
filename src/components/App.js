@@ -44,8 +44,8 @@ class App extends Component {
       mainInfoLang,
       numberCharsErrorMinLang,
       numberCharsErrorMaxLang,
-      lettersCharsErrorMinLang,
-      weekLang,
+      lettersCharsErrorLang,
+      weakLang,
       mediumLang,
       strongLang,
       veryStrongLang,
@@ -66,6 +66,16 @@ class App extends Component {
           specialChars={specialCharsLang}
           copyToClipboard={copyToClipboardLang}
           password={password}
+          numberCharsErrorMinLang={numberCharsErrorMinLang}
+          numberCharsErrorMaxLang={numberCharsErrorMaxLang}
+          lettersCharsErrorLang={lettersCharsErrorLang}
+          weakLang={weakLang}
+          mediumLang={mediumLang}
+          strongLang={strongLang}
+          veryStrongLang={veryStrongLang}
+          errorCheckboxLang={errorCheckboxLang}
+          charsWarningLang={charsWarningLang}
+          mainInfoLang={mainInfoLang}
         />
         <SideContainer guide={guideLang} />
         <ArticleContainer />

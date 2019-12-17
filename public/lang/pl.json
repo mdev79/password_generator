@@ -15,11 +15,11 @@
   "mainInfoLang": "podaj liczbę od 4 do 64",
   "numberCharsErrorMinLang": "minimalna liczba znaków to 4",
   "numberCharsErrorMaxLang": "maksymalna liczba znaków to 64",
-  "lettersCharsErrorMinLang": "czego nie rozumiesz? podaj LICZBĘ",
-  "weekLang": "słabe",
+  "lettersCharsErrorLang": "czego nie rozumiesz? podaj LICZBĘ",
+  "weakLang": "słabe",
   "mediumLang": "średnie",
   "strongLang": "silne",
   "veryStrongLang": "bardzo silne",
-  "errorCheckboxLang": "musisz zaznaczyć przynajmniej jeden rodzaj znaków",
+  "errorCheckboxLang": "musisz zaznaczyć przynajmniej jeden checkbox!",
   "charsWarningLang": "zalecane jest używanie małych i wielkich liter, cyfr i znaków specjalnmych"
 }
