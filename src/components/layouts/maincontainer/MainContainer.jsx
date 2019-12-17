@@ -150,7 +150,7 @@ class MainContainer extends Component {
     });
     this.handleValidate();
   };
-
+  //
   getCharsNumber = e => {
     const value = e.target.value;
     this.setState({
