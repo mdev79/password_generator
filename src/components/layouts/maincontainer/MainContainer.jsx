@@ -99,6 +99,11 @@ class MainContainer extends Component {
         password += data[char];
       }
       console.log(password);
+      const passArea = document.querySelector('.pass__container');
+      password.length > 32
+        ? passArea.classList.add('small--letters')
+        : passArea.classList.remove('small--letters');
+      console.log(passArea.classList);
       this.setState({
         password
       });
