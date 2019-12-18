@@ -23,7 +23,7 @@ class MainContainer extends Component {
     specialChars: true,
     password: 'coś tam',
     // errors settings
-    errorMessage: 'silne'
+    errorMessage: 'bardzo silne'
   };
 
   componentDidMount = () => {
@@ -38,31 +38,7 @@ class MainContainer extends Component {
     });
   };
 
-  getCheckboxData = e => {
-    const { checkboxOn, source } = this.state;
-    const name = e.target.name;
-    const checked = e.target.checked;
-    let tempData = '';
-    let tempCheckboxArray = checkboxOn;
-
-    checkboxOn.includes(`${name}`) && this.state[name]
-      ? (tempCheckboxArray = tempCheckboxArray.filter(el => el !== `${name}`))
-      : (tempCheckboxArray = [...tempCheckboxArray, `${name}`]);
-    tempCheckboxArray.forEach(el => (tempData += source[el]));
-    this.setState({
-      //  prettier-ignore
-      checkboxOn: (
-        checkboxOn.includes(`${name}`) && this.state[name]
-          ? checkboxOn.filter(el => el !== `${name}`)
-          : [...checkboxOn, `${name}`]
-          ),
-      [name]: checked,
-      data: tempData
-    });
-  };
-
-  handleValidate = () => {
-    const { checkboxOn, charsNumber } = this.state;
+  handleValidate = (checkboxOn, charsNumber) => {
     const {
       lettersCharsErrorLang,
       weakLang,
@@ -78,16 +54,11 @@ class MainContainer extends Component {
       errorMessage = lettersCharsErrorLang;
     } else {
       if (charsNumber >= 4 && charsNumber <= 64 && checkboxOn.length > 0) {
-        if (
-          charsNumber <= 6 ||
-          (!checkboxOn.includes('numbers') &&
-            !checkboxOn.includes('specialChars'))
-        ) {
+        if (charsNumber <= 6 || checkboxOn.length < 3) {
           errorMessage = weakLang;
         } else if (
-          charsNumber <= 8 ||
-          !checkboxOn.includes('numbers') ||
-          !checkboxOn.includes('specialChars')
+          (charsNumber <= 8 && checkboxOn.length > 2) ||
+          (charsNumber > 8 && checkboxOn.length === 3)
         ) {
           errorMessage = mediumLang;
         } else if (
@@ -121,25 +92,64 @@ class MainContainer extends Component {
   getPassword = () => {
     const { charsNumber, data } = this.state;
     let password = '';
-    for (let i = 0; i < charsNumber; i++) {
-      const char = Math.floor(Math.random() * data.length);
-      password += data[char];
+    const btn = document.querySelector('.pass__gen__btn');
+    if ([...btn.classList].includes('active--btn')) {
+      for (let i = 0; i < charsNumber; i++) {
+        const char = Math.floor(Math.random() * data.length);
+        password += data[char];
+      }
+      console.log(password);
+      this.setState({
+        password
+      });
     }
-    console.log(password);
-    const errorMessage = this.handleValidate();
-    console.log(errorMessage);
-    this.setState({
-      password,
-      errorMessage
-    });
   };
+
   //
   getCharsNumber = e => {
-    const value = e.target.value;
+    const { checkboxOn } = this.state;
+    const value = e.target.value * 1;
+    const errorMessage = this.handleValidate(checkboxOn, value);
     this.setState({
-      charsNumber: value
+      charsNumber: !isNaN(value) != 0 ? value : 0,
+      errorMessage
     });
+    const btn = document.querySelector('.pass__gen__btn');
+    value >= 4 && value <= 64 && checkboxOn.length > 0
+      ? btn.classList.add('active--btn')
+      : btn.classList.remove('active--btn');
   };
+
+  getCheckboxData = e => {
+    const { checkboxOn, source, charsNumber } = this.state;
+    const name = e.target.name;
+    const checked = e.target.checked;
+    let tempData = '';
+    let tempCheckboxArray = checkboxOn;
+
+    checkboxOn.includes(`${name}`) && this.state[name]
+      ? (tempCheckboxArray = tempCheckboxArray.filter(el => el !== `${name}`))
+      : (tempCheckboxArray = [...tempCheckboxArray, `${name}`]);
+    tempCheckboxArray.forEach(el => (tempData += source[el]));
+    const errorMessage = this.handleValidate(tempCheckboxArray, charsNumber);
+    console.log(tempCheckboxArray.length);
+    this.setState({
+      //  prettier-ignore
+      checkboxOn: (
+        checkboxOn.includes(`${name}`) && this.state[name]
+          ? checkboxOn.filter(el => el !== `${name}`)
+          : [...checkboxOn, `${name}`]
+          ),
+      [name]: checked,
+      errorMessage,
+      data: tempData
+    });
+    const btn = document.querySelector('.pass__gen__btn');
+    tempCheckboxArray.length > 0 && (charsNumber >= 4 && charsNumber <= 64)
+      ? btn.classList.add('active--btn')
+      : btn.classList.remove('active--btn');
+  };
+
   render() {
     const { mainBtn, password, copyToClipboard } = this.props;
     return (
@@ -155,7 +165,7 @@ class MainContainer extends Component {
           getCharsNumber={this.getCharsNumber}
           {...this.props}
         />
-        <PassArea password={password} />
+        <PassArea password={this.state.password} />
         <CopyToClipBtn copyToClipboard={copyToClipboard} />
       </div>
     );
