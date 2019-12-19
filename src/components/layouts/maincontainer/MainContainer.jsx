@@ -103,14 +103,17 @@ class MainContainer extends Component {
       password.length > 32
         ? passArea.classList.add('small--letters')
         : passArea.classList.remove('small--letters');
-      console.log(passArea.classList);
+      const copyBtn = document.querySelector('.btn__copy');
+      if (!copyBtn.classList.contains('visible--btn')) {
+        console.log('pokazuje się');
+        copyBtn.classList.add('visible--btn');
+      }
       this.setState({
         password
       });
     }
   };
 
-  //
   getCharsNumber = e => {
     const { checkboxOn } = this.state;
     const value = e.target.value * 1;
@@ -131,7 +134,6 @@ class MainContainer extends Component {
     const checked = e.target.checked;
     let tempData = '';
     let tempCheckboxArray = checkboxOn;
-
     checkboxOn.includes(`${name}`) && this.state[name]
       ? (tempCheckboxArray = tempCheckboxArray.filter(el => el !== `${name}`))
       : (tempCheckboxArray = [...tempCheckboxArray, `${name}`]);
@@ -155,6 +157,16 @@ class MainContainer extends Component {
       : btn.classList.remove('active--btn');
   };
 
+  copyPassword = () => {
+    const pass = document.querySelector('.pass__container');
+    const tempArea = document.createElement('textarea');
+    pass.appendChild(tempArea);
+    tempArea.textContent = pass.textContent;
+    tempArea.select();
+    document.execCommand('copy');
+    pass.removeChild(tempArea);
+  };
+
   render() {
     const { mainBtn, password, copyToClipboard } = this.props;
     return (
@@ -171,7 +183,10 @@ class MainContainer extends Component {
           {...this.props}
         />
         <PassArea password={this.state.password} />
-        <CopyToClipBtn copyToClipboard={copyToClipboard} />
+        <CopyToClipBtn
+          copyToClipboard={copyToClipboard}
+          copyPassword={this.copyPassword}
+        />
       </div>
     );
   }
