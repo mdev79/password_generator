@@ -152,7 +152,7 @@ class MainContainer extends Component {
       data: tempData
     });
     const btn = document.querySelector('.pass__gen__btn');
-    tempCheckboxArray.length > 0 && (charsNumber >= 4 && charsNumber <= 64)
+    tempCheckboxArray.length > 0 && charsNumber >= 4 && charsNumber <= 64
       ? btn.classList.add('active--btn')
       : btn.classList.remove('active--btn');
   };

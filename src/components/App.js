@@ -3,7 +3,6 @@ import '../style/App.css';
 import Logo from './layouts/logo/Logo';
 import MainContainer from './layouts/maincontainer/MainContainer';
 import SideContainer from './layouts/sidecontainer/SideContainer';
-import Article from './layouts/article/Article';
 import Footer from './layouts/footer/Footer';
 import FourOFour from './layouts/404/404';
 import Cookie from './layouts/cookie/Cookie';
