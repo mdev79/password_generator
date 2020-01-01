@@ -41,6 +41,8 @@ class App extends Component {
       numbers,
       specialChars
     } = this.state.source;
+    this.handleCookie();
+    this.wallpaperChanger(10);
     fetch(urlToLangFile)
       .then(res => res.json())
       .then(res =>
@@ -187,6 +189,33 @@ class App extends Component {
     document.execCommand('copy');
     pass.removeChild(tempArea);
   };
+  handleCookie = () => {
+    if (
+      document.cookie.replace(
+        /(?:(?:^|.*;\s*)cookieInfo\s*\=\s*([^;]*).*$)|^.*$/,
+        '$1'
+      ) !== 'true'
+    ) {
+      const cookieInfo = document.querySelector('.cookie__info');
+      cookieInfo.classList.add('info--visible');
+      document.cookie =
+        'cookieInfo=true; expires=Fri, 31 Dec 9999 23:59:59 GMT';
+    }
+  };
+  closePopUp = () => {
+    const cookieInfo = document.querySelector('.cookie__info');
+    cookieInfo.classList.contains('info--visible')
+      ? cookieInfo.classList.remove('info--visible')
+      : console.log('ale to już było i nie wróci więcej...');
+  };
+  wallpaperChanger = number => {
+    const app = document.querySelector('.App');
+    const appImageNumber = Math.floor(Math.random() * number) + 1;
+    const numberFormated =
+      appImageNumber >= 10 ? appImageNumber : `0${appImageNumber}`;
+    console.log(`image${numberFormated}.jpg`);
+    app.style.backgroundImage = `images/image${numberFormated}.jpg`;
+  };
 
   render() {
     const {
@@ -243,7 +272,7 @@ class App extends Component {
         />
         <SideContainer changeLang={this.changeLang} guide={guideLang} />
         <Footer />
-        <Cookie />
+        <Cookie closePopUp={this.closePopUp} handleCookie={this.handleCookie} />
         {/* <button onClick={}>test test test</button> */}
       </div>
     );
