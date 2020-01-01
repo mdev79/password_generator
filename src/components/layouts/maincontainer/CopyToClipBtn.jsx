@@ -2,10 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const CopyToClipBtn = props => {
-  const { copyToClipboard, copyPassword } = props;
+  const { copyToClipboardLang, copyPassword } = props;
   return (
     <button className='btn blue__btn btn__copy' onClick={copyPassword}>
-      {copyToClipboard}
+      {copyToClipboardLang}
     </button>
   );
 };
